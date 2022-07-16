@@ -1,0 +1,437 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+  <link rel="stylesheet" href="{% static '540.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <!-- CSS only BS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <link rel="icon" type="image/png" href="{% static 'src/appaba.png' %}" sizes="24" />
+
+  <link rel="stylesheet" type="text/css" href="{% static 'slick/slick.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'slick/slick-theme.css' %}" />
+
+  <title>PixelPlus</title>
+</head>
+
+<body>
+  <!-- NAVBAR -->
+
+  <header id="header">
+    <img id="logo" src="{% static 'src/logo.png' %}" alt="">
+    <nav id="nav">
+      <button id="btn-mobile"><img src="{% static 'src/menu-amburguer.svg' %}" alt=""></button>
+      <ul id="menu" class="animate__fadeOut">
+        <li>
+          <a href="#home">HOME</a>
+          <a href="#quemsomos">QUEM SOMOS</a>
+          <a href="#servicos">SERVIÇOS</a>
+          <a href="#portfolio">PORTFÓLIO</a>
+          <a href="#depoimentos">DEPOIMENTOS</a>
+          <a href="#contatos">CONTATOS</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- seções -->
+
+  <!-- HOME -->
+  <div class="container-fluid geral">
+    <div class="row home" id="home">
+      <div class="home-txt col-12 col-xl-6">
+        <h1>Sua empresa
+          <br>na palma da
+          <br>mão!
+        </h1>
+        <center>
+          <a href="#contatos">Faça já seu orçamento!</a>
+        </center>
+
+      </div>
+      <div class="home-img col-12 col-xl-6" id="teste">
+        <img class="roda" src="{% static 'src/DESENVOLVIMENTO MOBILE.png' %}" alt="">
+        <img class="homem" src="{% static 'src/homem.png' %}" alt="">
+      </div>
+    </div>
+
+    <!-- PORTFOLIO -->
+    <div class="row portfolio">
+      <div class="card-portfolio col-12 col-xl-3">
+        <h1>{{ portfolio.clientes }}</h1>
+        <h3>C L I E N T E S</h3>
+      </div>
+      <div class="card-portfolio col-12 col-xl-3">
+        <h1>{{ portfolio.projetos }}</h1>
+        <h3>P R O J E T O S</h3>
+      </div>
+      <div class="card-portfolio col-12 col-xl-3">
+        <h1>{{ portfolio.premios }}</h1>
+        <h3>P R Ê M I O S</h3>
+      </div>
+    </div>
+
+    <!-- QUEM SOMOS -->
+    <div class="row quem-somos" id="quemsomos">
+      <div class="textos-quem-somos col-12 col-xl-6">
+        <h1>Quem Somos?</h1>
+        <p>{{ quemsomos.paragrafo }}</p>
+      </div>
+      <div class="ceo">
+        <img src="{{ quemsomos.image.url }}" alt="" />
+      </div>
+    </div>
+
+    <!-- NOSSOS SERVIÇOS -->
+    <!-- TITULO DA SEÇÃO -->
+    <div class="servicos" id="servicos">
+      <div class="servicos-titulo">
+        <h1>Nossos Serviços</h1>
+      </div>
+    </div>
+
+    <!-- INFOS DA SEÇÃO -->
+    <div class="row servicos-info">
+      <div class="servicos-info-img-1 col-12 col-xl-4">
+        <img src="{% static 'src/celular_serviços.png' %}" alt="" />
+      </div>
+      <div class="servicos-info-txt-1 col-12 col-xl-7">
+        <h1>{{ servicos1.titulo }}</h1>
+        <p>{{ servicos1.paragrafo }}</p>
+      </div>
+
+      <div class="servicos-info-img-3 col-12 col-xl-4">
+        <img src="{% static 'src/notebook_servicos.png' %}" alt="" />
+      </div>
+      <div class="servicos-info-txt-3 col-12 col-xl-7">
+        <h1>{{ servicos2.titulo }}</h1>
+        <p>{{ servicos2.paragrafo }}</p>
+      </div>
+
+      <div class="servicos-info-txt-2 col-12 col-xl-7">
+        <h1>{{ servicos2.titulo }}</h1>
+        <p>{{ servicos2.paragrafo }}</p>
+      </div>
+      <div class="servicos-info-img-2 col-12 col-xl-4">
+        <img src="{% static 'src/notebook_servicos.png' %}" alt="" />
+      </div>
+    </div>
+
+    <!-- NOSSOS TRABALHOS -->
+    <!-- TITULO DA SEÇÃO -->
+
+    <center>
+      <h1 class="titulo-trabalhos">nossos trabalhos</h1>
+      <!-- INFOS DA SEÇÃO -->
+      <div class="trabalhos-carousel">
+        <div class="trabalhos-cards">
+          {% for object in trabalhos %}
+          <div class="carousel-card">
+            <h1>{{ object.title }}</h1>
+            <img src="{{ object.image.url }}" alt="" />
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </center>
+
+    <!-- DEPOIMENTOS -->
+    <!-- TITULO DA SEÇÃO -->
+    <div class="depoimentos" id="depoimentos">
+      <div class="depoimentos-titulo">
+        <h1>O que falam sobre nós</h1>
+      </div>
+    </div>
+    <!-- INFOS DA SEÇÃO -->
+    <div class="carousel-depoimentos">
+      <ul class="seta-desktop">
+        <li class="seta-depoimentos" onclick="message(2, 1)">
+          <img src="{% static 'src/arrow-left-marinho.svg' %}" />
+        </li>
+      </ul>
+
+      {% for object in depoimentos %}
+
+      {% if forloop.counter0 == 0 %}
+      <div class="seta-desktop" id="message_1">
+        <div class="card-depoimento">
+          <div class="perfil">
+            <img class="foto" src="{{ object.image.url }}">
+            <h2>{{ object.nome }}</h2>
+            <h3>{{ object.cargo }}</h3>
+          </div>
+          <div class="aspas">
+            <img class="aspas" src="{% static 'src/aspas.png' %}">
+          </div>
+          <div class="txt-depoimento">
+            <p>{{ object.depoimento }}</p>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+
+      {% if forloop.counter0 == 1 %}
+      <div class="seta-desktop" id="message_2" style="display: none;">
+        <div class="card-depoimento">
+          <div class="perfil">
+            <img class="foto" src="{{ object.image.url }}">
+            <h2>{{ object.nome }}</h2>
+            <h3>{{ object.cargo }}</h3>
+          </div>
+          <div class="aspas">
+            <img class="aspas" src="{% static 'src/aspas.png' %}">
+          </div>
+          <div class="txt-depoimento">
+            <p>{{ object.depoimento }}</p>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+
+      {% if forloop.counter0 == 2 %}
+      <div class="seta-desktop" id="message_3" style="display: none;">
+        <div class="card-depoimento">
+          <div class="perfil">
+            <img class="foto" src="{{ object.image.url }}">
+            <h2>{{ object.nome }}</h2>
+            <h3>{{ object.cargo }}</h3>
+          </div>
+          <div class="aspas">
+            <img class="aspas" src="{% static 'src/aspas.png' %}">
+          </div>
+          <div class="txt-depoimento">
+            <p>{{ object.depoimento }}</p>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+
+      {% endfor %}
+
+      <ul class="seta-desktop">
+        <li class="seta-depoimentos" onclick="message(1, 1)">
+          <img src="{% static 'src/arrow-rigth-marinho.svg' %}" />
+        </li>
+      </ul>
+    </div>
+    <!-- DEPOIMENTOS MOBILE -->
+    <div class="seta-mobile">
+      {% for object in depoimentos %}
+      
+      {% if forloop.counter0 == 0 %}
+      <img src="{{ object.image.url }}">
+      <h2>{{ object.nome }}</h2>
+      <h3>{{ object.cargo }}</h3>
+      <p>{{ object.depoimento }}</p>
+      {% endif %}
+
+      {% if forloop.counter0 == 1 %}
+      <img src="{{ object.image.url }}">
+      <h2>{{ object.nome }}</h2>
+      <h3>{{ object.cargo }}</h3>
+      <p>{{ object.depoimento }}</p>
+      {% endif %}
+
+      {% if forloop.counter0 == 2 %}
+      <img src="{{ object.image.url }}">
+      <h2>{{ object.nome }}</h2>
+      <h3>{{ object.cargo }}</h3>
+      <p>{{ object.depoimento }}</p>
+      {% endif %}
+
+      {% endfor %}
+    </div>
+
+    <!-- CONTATOS -->
+    <div class="contato" id="contatos">
+      <div class="caixa-form">
+        <div class="caixa-titulo">
+          <h1>Entre em contato conosco!</h1>
+        </div>
+        <form class="caixa-auxiliarForm" method="POST">{% csrf_token %}
+          <div class="caixa-formulario">
+            <div class="caixa-esquerda">
+              <h3 class="nome">Nome:</h3>
+              <input type="text" name="nome" class="nome"></br>
+              <h3 class="nome">Email:</h3>
+              <input type="text" name="email" class="email">
+            </div>
+            <div class="caixa-direita">
+              <h3 class="nome">Seu comentario:</h3>
+              <input type="text" name="comentario" class="comentario">
+            </div>
+          </div>
+          <div class="caixa-botao">
+            <input type="submit" value="Enviar" class="Enviar">
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+      <div class="footer-redeSociais">
+        <div class="redeSocial">
+          <a href="{{ redes.facebook }}" target="_blank"><img class="icones" src="{% static 'src/facebook1.png' %}"></a>
+        </div>
+        <div class="redeSocial">
+          <a href="{{ redes.instagram }}" target="_blank"><img class="icones" src="{% static 'src/instagram1.png' %}"></a>
+        </div>
+        <div class="redeSocial">
+          <a href="{{ redes.linkedin }}" target="_blank"><img class="icones" src="{% static 'src/linkedin.png' %}"></a>
+        </div>
+        <div class="redeSocial">
+          <a href="{{ redes.twitter }}" target="_blank"><img class="icones" src="{% static 'src/twitter.png' %}"></a>
+        </div>
+      </div>
+      <div class="footer-endereco">
+        <div class="contato-footer">
+          <h1 class="fale-conosco">Fale Conosco</h1>
+          <h1>84 98871-6812</h1>
+          <h1>contato@eject.com.br</h1>
+        </div>
+        <div class="logo-footer">
+          <img class="logoAzul" src="{% static 'src/logoAzul.png' %}">
+        </div>
+        <div class="endereco">
+          <h1 class="fale-conosco">Endereço</h1>
+          <h1>Avenida Salgado filho
+            </br>Candelária, 20304,
+            </br>CEP: 59.480-000, Natal,RN</h1>
+
+        </div>
+      </div>
+      <div class="footer-copythit">
+        <h1>Feito com compromisso pelo Squad 3 - ProSEmpre 2022.1 ©</h1>
+      </div>
+    </div>
+
+  </div> <!-- div fim geral -->
+
+  <!-- SCRIPTS -->
+  <script>
+    //CÓDIGOS
+
+    //navbar
+    const btnMobile = document.getElementById('btn-mobile');
+
+    function toggleMenu() {
+      const nav = document.getElementById('nav');
+      const menu = document.getElementById('menu');
+      nav.classList.toggle('active');
+      menu.classList.toggle('animate__animated');
+      menu.classList.toggle('animate__fadeIn');
+      menu.classList.toggle('animate__fadeOut');
+    }
+
+    btnMobile.addEventListener('click', toggleMenu);
+
+    //carousel depoimentos
+    x = 1;
+    function message(i) {
+
+      if (i == 1) {
+        x = x + 1;
+      }
+      if (i == 2) {
+        x = x - 1;
+      }
+      if (x > 3) {
+        x = 1;
+      }
+      if (x < 1) {
+        x = 3;
+      }
+
+      if (x == 1) {
+        document.getElementById('message_1').style.display = "block";
+        document.getElementById('message_2').style.display = "none";
+        document.getElementById('message_3').style.display = "none";
+      }
+      if (x == 2) {
+        document.getElementById('message_1').style.display = "none";
+        document.getElementById('message_2').style.display = "block";
+        document.getElementById('message_3').style.display = "none";
+      }
+      if (x == 3) {
+        document.getElementById('message_1').style.display = "none";
+        document.getElementById('message_2').style.display = "none";
+        document.getElementById('message_3').style.display = "block";
+      }
+    }
+
+
+  </script>
+
+  <!-- IMPORTS -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+
+  <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+  <script type="text/javascript" src="{% static 'slick/slick.min.js' %}"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $('.trabalhos-cards').slick({
+        dots: false,
+        infinite: true,
+        focusOnSelect: false,
+        speed: 300,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        responsive: [
+          {
+            breakpoint: 1024,
+            settings: {
+              slidesToShow: 3,
+              slidesToScroll: 1,
+              infinite: true,
+              dots: false,
+            }
+          },
+          {
+            breakpoint: 600,
+            settings: {
+              arrows: false,
+              slidesToShow: 2,
+              slidesToScroll: 1
+            }
+          },
+          {
+            breakpoint: 480,
+            settings: {
+              arrows: false,
+              slidesToShow: 1,
+              slidesToScroll: 1
+            }
+          }
+          // You can unslick at a given breakpoint now by adding:
+          // settings: "unslick"
+          // instead of a settings object
+        ]
+      });
+    });
+  </script>
+
+</body>
+
+
+
+</html>
